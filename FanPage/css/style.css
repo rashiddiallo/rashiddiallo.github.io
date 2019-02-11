@@ -1,0 +1,83 @@
+/* CSS Styles */
+body{
+	padding: 0px 0px 0px 0px;
+	margin:  0px 0px 0px 0px;
+	font-family: Arial, Helvetica, sans-serif;
+
+}
+
+html{ 		
+		/* "../" means we're leaving the css folder */
+		background: url(../images/Backgroundimage.jpg) no-repeat center center fixed;
+		-webkit-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+}
+
+/* style the header 1 tag */
+h1{
+	color: rgb(255, 255, 0):;
+	font-size:  60px
+}
+
+/* style header 2 and header 3 tag */
+h2, h3{
+	color: rgb(255, 255, 255);
+}
+
+h2{
+	font-size: 40px; 
+	color: 
+
+}
+
+a{
+	color:rgb(29, 224, 35);
+	text-decoration:none;
+}
+
+a:visited{
+	color:rgb(224, 28, 129);
+}
+
+a:hover{
+	color: white;
+}
+/* ids are called with # */
+#mainContainer{		/*entire page positioning  */
+	width:100%;
+	height:100vh;
+	position: relative;
+}
+
+#contentContainer{		/* listening to content container, positing content inside the page */
+	position: relative;
+	width:800px;
+	height:auto;
+	margin-left: auto;
+	margin-right: auto;
+
+	padding:20px;  
+}
+
+#mainImage{		/* listening to content container, relative to parent div */
+	position:relative;
+	left:40px;
+}
+
+#furby{
+	position:fixed;
+	top:20px;
+	right:30px;
+}
+
+#mountainVideo{
+	position:relative;
+	
+}
+
+/* calsses are called with a . */
+.greenText{
+	color:green;
+}
+
