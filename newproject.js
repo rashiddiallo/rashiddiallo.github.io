@@ -4,6 +4,7 @@ var userName;
 var title;
 var firstOption;
 var secondOption;
+var thirdOption;
 
 //input
 var slider;
@@ -14,8 +15,6 @@ var startOver;
 
 var playAgain;
 
-
-
 function preload(){  
 
 
@@ -25,36 +24,36 @@ function setup() {
 	canvas = createCanvas(windowWidth, windowHeight);
 	canvas.position(0,0);
 	canvas.style('z-index', '-1');
-	background(120);
+	// background(120);
 	beginning();
 
 }
 
 function draw() {
 	background(0);
-	rectMode();
-	fill(155, 70, 30);
-	rect(700, 300, 200, 400);
-	ellipseMode();
-	fill(155);
-	ellipse(800, 360, 100, 100);
-	fill(255);
-	ellipse(800, 360, 70, 70);
-	fill(155);
-	ellipse(800, 490, 100, 100);
-	fill(255);
-	ellipse(800, 490, 70, 70);
-	fill(155);
-	ellipse(800, 620, 100, 100);
-	fill(255);
-	ellipse(800, 620, 70, 70);
-	textSize(32);
-	fill(70);
-	text('3', 790, 370);
-	fill(70);
-	text('2', 790, 500);
-	fill(70);
-	text('1', 790, 630);
+	// rectMode();
+	// fill(155, 70, 30);
+	// rect(700, 300, 200, 400);
+	// ellipseMode();
+	// fill(155);
+	// ellipse(800, 360, 100, 100);
+	// fill(255);
+	// ellipse(800, 360, 70, 70);
+	// fill(155);
+	// ellipse(800, 490, 100, 100);
+	// fill(255);
+	// ellipse(800, 490, 70, 70);
+	// fill(155);
+	// ellipse(800, 620, 100, 100);
+	// fill(255);
+	// ellipse(800, 620, 70, 70);
+	// textSize(32);
+	// fill(70);
+	// text('3', 790, 370);
+	// fill(70);
+	// text('2', 790, 500);
+	// fill(70);
+	// text('1', 790, 630);
 
 	
 	
@@ -81,7 +80,7 @@ function beginning(){
 }
 
 function startStory(){
-	//background(0);
+	background(0);
 	greeting.hide();
 	nameInput.hide();
 	
@@ -92,29 +91,39 @@ function startStory(){
 	firstOption = createA("#", "Lobby");
 
 	createElement('br');
+	createElement('br');
 
 	secondOption = createA("#", "1st Floor");
 	//check to see if the user has clicked on one of the options
 
 	//trigger attached function
+	createElement('br');
+	createElement('br');
 
-	firstOption.mousePressed(walkHome);
+	thirdOption = createA('#', "2nd Floor")
 
-	secondOption.mousePressed(walkToSun);
+	firstOption.mousePressed(Lobby);
+
+	secondOption.mousePressed(firstFloor);
+
+	thirdOption.mousePressed(secondFloor);
 
 }
 
 //the end of the game
-function walkHome(){
+function Lobby(){
 	background(0);
+
 	firstOption.hide();
 
 	secondOption.hide();
 
+	thirdOption.hide();
+
 	userName.hide();
 	//change the text for the title
 
-	title.html("You have reached the lobby. Have a great day.");
+	title.html("You have reached the lobby. Have a great day. :)");
 	//startOver = createA("index.html", "Start Over")
 
 	//firstOption.mousePressed(startOver);
@@ -122,44 +131,81 @@ function walkHome(){
 
 }
 
-function walkToSun(){
+function firstFloor(){
 	background(0);
 	userName.hide();
-	title.html(nameInput.value() + ', 1st Floor. You see a child');
+	thirdOption.hide();
+	title.html(nameInput.value() + ', You have reached the 1st Floor. You see something in the distance');
 	firstOption.html("Go to 2nd floor");
 
-	secondOption.html("Walk towards the child");
+	secondOption.html("Walk towards it");
 
-	firstOption.mousePressed(closerToSun);
+	firstOption.mousePressed(secondFloor);
 
-	secondOption.mousePressed(planetElements);
+	secondOption.mousePressed(being);
 
 }
 
-function closerToSun(){
+function child(){
 
+	thirdOption.hide();
+
+	title.html(nameInput.value() + ', The child has something in her hand. It is a note. The note says there is something on the 3rd floor');
+
+	firstOption.html('Find out what is on the 3rd floor');
+
+	secondOption.html("You're too scared. Run to the elevator and escape to the lobby");
+
+	firstOption.mousePressed(thirdFloor);
+
+	secondOption.mousePressed(Lobby);
+
+}
+
+function being(){
+	background(0);
+	userName.hide();
+	thirdOption.hide();
+	title.html(nameInput.value() + ", It's a Wolf and its headed torwards you!! But there is a poison bomb at your feet");
+	firstOption.html("Throw poison bomb at Wolf");
+
+	secondOption.html("Try to fight it with your bare hands");
+
+	firstOption.mousePressed(wolfDead);
+
+	secondOption.mousePressed(killed);
+
+}
+
+function wolfDead(){
+	background(0);
+	userName.hide();
+	thirdOption.hide();
+	title.html(nameInput.value() + ', The poison bomb managed to kill the wolf');
+	firstOption.html("Go to 2nd floor");
+
+	secondOption.html('')
+
+	firstOption.mousePressed(secondFloor);
+
+	secondOption.mousePressed(Lobby);
+}
+
+function killed(){
+	background(0);
 	firstOption.hide();
 
 	secondOption.hide();
 
-	title.html(nameInput.value() + ', The child has something in her hand');
+	thirdOption.hide();
 
-}
+	userName.hide();
+	//change the text for the title
 
-function planetElements(){
-
-	firstOption.hide();
-
-	secondOption.hide();
-
-	 slider = createSlider(0, 255, 0);
-
-	title.html(nameInput.value() + " reveal what the child has in her hand");
-
-	growingPlanetBool = true;
+	title.html("The wolf was too powerful and you were killed.");
+	//startOver = createA("index.html", "Start Over")
 
 	playAgain = createA("index.html", "Play Again")
-
 }
 
 /////////////////////////////////////
@@ -168,19 +214,47 @@ function planetElements(){
 
 ///////////////////////////////////
 
-function growingPlanet(){
-	 background(120);
+function secondFloor(){
+	background(0);
+	userName.hide();
+	thirdOption.hide();
+	title.html(nameInput.value() + ', You have reached the 2nd Floor. You see a child, what do you do?');
+	firstOption.html("Go to 3rd floor, leaving the child");
 
-	 //slider requires at least two arguments
+	secondOption.html("Walk towards the child");
 
-	//createSlider(min value, max value, starting value)
+	firstOption.mousePressed(thirdFloor);
 
-  	print(slider.value());
+	secondOption.mousePressed(child);
+}
 
-  	fill(slider.value());
+function animal(){
+	background(0);
+	userName.hide();
+	thirdOption.hide();
+	title.html(nameInput.value() + ", It's a dog. The dog has a note in its mouth. It says he just wants to go home");
+	firstOption.html("Take the dog home");
 
-  	ellipse(400, 400, slider.value(), slider.value());
+	secondOption.html("go back to the elevator and to the lobby, leaving the dog");
 
+	firstOption.mousePressed(Lobby);
+
+	secondOption.mousePressed(Lobby);
+
+}
+
+function thirdFloor(){
+	background(0);
+	userName.hide();
+	thirdOption.hide();
+	title.html(nameInput.value() + ', You have reached the 3rd Floor. You see what looks like an animal');
+	firstOption.html("Go back to the elevator and to the lobby");
+
+	secondOption.html("Walk towards the animal");
+
+	firstOption.mousePressed(Lobby);
+
+	secondOption.mousePressed(animal);
 }
 
 function windowResized(){
